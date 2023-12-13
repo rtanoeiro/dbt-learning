@@ -1,1 +1,1 @@
-select * from dev.stripe.payments;
+select * from dev.stripe.payments

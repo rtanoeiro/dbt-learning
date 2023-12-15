@@ -18,12 +18,14 @@ customer_orders as (
 
     select
         customer_id,
-        sum(amount) as lifetime_value
+        sum(amount) as lifetime_value,
         min(order_date) as first_order_date,
         max(order_date) as most_recent_order_date,
         count(order_id) as number_of_orders
 
     from orders
+    inner join payments
+        on payments.orderid = orders.order_id
 
     group by 1
 

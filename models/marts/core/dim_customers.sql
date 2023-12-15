@@ -1,32 +1,32 @@
 with customers as (
 
-    select * from {{ref("stg_customers")}}
+    select * from {{ ref("stg_customers") }}
 ),
 
 orders as (
 
-    select * from {{ref("stg_orders")}}
+    select * from {{ ref("stg_orders") }}
 ),
 
 
 payments as (
 
-    select * from {{ref("stg_payments")}}
+    select * from {{ ref("stg_payments") }}
 ),
 
 customer_orders as (
 
     select
-        customer_id,
-        sum(amount) as lifetime_value,
-        min(order_date) as first_order_date,
-        max(order_date) as most_recent_order_date,
-        count(order_id) as number_of_orders
+        orders.customer_id,
+        sum(payments.amount) as lifetime_value,
+        min(orders.order_date) as first_order_date,
+        max(orders.order_date) as most_recent_order_date,
+        count(orders.order_id) as number_of_orders
 
     from orders
     left join payments
         on payments.orderid = orders.order_id
-    where payments.status='success'
+    where payments.status = 'success'
 
     group by 1
 
@@ -46,7 +46,9 @@ final as (
 
     from customers
 
-    left join customer_orders using (customer_id)
+    left join
+        customer_orders
+        on customers.customer_id = customer_orders.customer_id
 
 )
 

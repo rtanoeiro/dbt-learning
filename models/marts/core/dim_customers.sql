@@ -24,8 +24,9 @@ customer_orders as (
         count(order_id) as number_of_orders
 
     from orders
-    inner join payments
+    left join payments
         on payments.orderid = orders.order_id
+    where payments.status='success'
 
     group by 1
 
@@ -49,4 +50,4 @@ final as (
 
 )
 
-select * from final
+select sum(lifetime_value) as lifetime_value from final

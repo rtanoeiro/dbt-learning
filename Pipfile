@@ -8,6 +8,7 @@ dbt-core = "*"
 dbt-core-interface = "*"
 dbt-redshift = "*"
 sqlfluff = "*"
+jinja2-simple-tags = "*"
 
 [dev-packages]
 

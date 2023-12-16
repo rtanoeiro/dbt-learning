@@ -3,3 +3,6 @@
 target/
 dbt_packages/
 logs/
+.python_version
+profiles.yml
+.user.yml

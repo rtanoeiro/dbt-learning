@@ -1,24 +1,24 @@
 with payments as (
 
-    select * from {{ref("stg_payments")}}
+    select * from {{ ref("stg_payments") }}
 ),
 
 orders as (
 
-    select * from {{ref("stg_orders")}}
+    select * from {{ ref("stg_orders") }}
 ),
 
 customers as (
 
-    select * from {{ref("stg_customers")}}
+    select * from {{ ref("stg_customers") }}
 )
 
-select 
+select
     orders.order_id,
     customers.customer_id,
     payments.amount
 from payments
 inner join orders
-    on orders.order_id = payments.orderid
+    on payments.orderid = orders.order_id
 inner join customers
-    on customers.customer_id = orders.customer_id
+    on orders.customer_id = customers.customer_id

@@ -19,6 +19,6 @@ select
     payments.amount
 from payments
 inner join orders
-    on orders.order_id = payments.orderid
+    on payments.orderid = orders.order_id
 inner join customers
-    on customers.customer_id = orders.customer_id
+    on orders.customer_id = customers.customer_id

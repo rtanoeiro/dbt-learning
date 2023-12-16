@@ -25,7 +25,7 @@ customer_orders as (
 
     from orders
     left join payments
-        on payments.orderid = orders.order_id
+        on orders.order_id = payments.orderid
     where payments.status = 'success'
 
     group by 1

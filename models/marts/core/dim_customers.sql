@@ -52,4 +52,4 @@ final as (
 
 )
 
-select sum(lifetime_value) as lifetime_value from final
+select * from final

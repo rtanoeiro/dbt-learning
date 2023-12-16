@@ -6,7 +6,7 @@ with orders as (
         order_date,
         status
 
-    from dev.jaffle_shop.orders
+    from {{ref('jaffle_shop', 'orders')}}
 
 )
 

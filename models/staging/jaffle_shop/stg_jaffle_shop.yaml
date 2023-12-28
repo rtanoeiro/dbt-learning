@@ -30,3 +30,8 @@ models:
                 - returned
                 - returned_pending
                 - placed
+      - name: customer_id
+        tests:
+          - relationships:
+              to: stg_customers
+              field: customer_id

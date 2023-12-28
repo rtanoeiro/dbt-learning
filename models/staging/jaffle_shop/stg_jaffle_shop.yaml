@@ -16,7 +16,9 @@ models:
           - not_null
       - name: customer_id
         tests:
-          - unique
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id          - unique
           - not_null
       - name: order_date
         tests:
@@ -31,7 +33,3 @@ models:
                 - returned_pending
                 - placed
       - name: customer_id
-        tests:
-          - relationships:
-              to: stg_customers
-              field: customer_id

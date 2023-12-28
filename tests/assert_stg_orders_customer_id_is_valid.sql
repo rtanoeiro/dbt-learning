@@ -4,7 +4,7 @@ with customer as (
 
 orders as (
     select * from ref('stg_orders')
-),
+)
 
 select distinct customer.customer_id
 from customer
